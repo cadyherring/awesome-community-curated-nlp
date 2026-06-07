@@ -1,0 +1,63 @@
+name: Forensic Timeline Refresh
+
+on:
+  # Run manually from GitHub Actions tab
+  workflow_dispatch:
+  # Run on a schedule — uncomment to enable hourly refresh
+  # schedule:
+  #   - cron: '0 * * * *'   # every hour
+  #   - cron: '0 9 * * *'   # every day at 9am UTC
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: claude/whatsapp-forensic-timeline-gfBqk
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # ── Option A: Use pre-saved export (raw_export.json stored locally / in secret) ──
+      # Store the JSON content as a GitHub secret: WHATSAPP_EXPORT_JSON
+      - name: Restore raw export from secret
+        if: ${{ secrets.WHATSAPP_EXPORT_JSON != '' }}
+        run: |
+          mkdir -p forensic/data
+          echo '${{ secrets.WHATSAPP_EXPORT_JSON }}' > forensic/data/raw_export.json
+        env:
+          WHATSAPP_EXPORT_JSON: ${{ secrets.WHATSAPP_EXPORT_JSON }}
+
+      # ── Option B: Re-fetch from Google Drive (requires GDRIVE_CREDENTIALS secret) ──
+      # Uncomment if you want live re-fetch from the Google Sheet
+      # - name: Fetch latest from Google Drive
+      #   run: |
+      #     pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+      #     python3 forensic/fetch_gdrive.py \
+      #       --file-id 17JTPVKJQ2kZ_l9_NYF3WczKhfhKty67OuDUw5GfAR3Y \
+      #       --credentials "$GDRIVE_CREDENTIALS" \
+      #       --output forensic/data/raw_export.json
+      #   env:
+      #     GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+
+      - name: Run forensic analysis
+        run: |
+          python3 forensic/forensic_timeline.py \
+            --data forensic/data/raw_export.json \
+            --output-dir forensic/output
+
+      - name: Commit updated output
+        run: |
+          git config user.name  "forensic-bot"
+          git config user.email "forensic-bot@users.noreply.github.com"
+          git add forensic/output/
+          git diff --cached --quiet || \
+            git commit -m "chore: refresh forensic analysis output [skip ci]"
+          git push origin claude/whatsapp-forensic-timeline-gfBqk
