@@ -110,13 +110,13 @@ Last name: Woods
 [Leave blank unless you know of any]
 
 **Q3.3 — His date of birth**
-[Fill in if you know it — check any documents you have]
+17 March 1994 *(confirmed — he sent this in a WhatsApp message on 09/07/2025)*
 
 **Q3.4 — Does he live with you currently?**
 ☑ Yes
 
 **Q3.5 — His address**
-[Rewley Road address, Oxford — fill in the full address including postcode]
+74 Rewley Road, Oxford *(add postcode — OX1 2RX or check on Royal Mail postcode finder)*
 
 **Q3.6 — His phone number**
 [Fill in if you have it — you likely do from WhatsApp]
@@ -175,7 +175,7 @@ End: Leave blank (ongoing)
 ☑ Yes
 
 **Q7.2 — Address of the property**
-[Rewley Road address, Oxford — full address and postcode]
+74 Rewley Road, Oxford *(add postcode)*
 
 **Q7.3 — Who currently lives there?**
 ☑ Me
@@ -287,7 +287,7 @@ Whose full name is: Henry Woods
 ☑ I am also applying for an occupation order
 
 **1.5 — Address for occupation order**
-[Rewley Road address, Oxford]
+74 Rewley Road, Oxford *(add postcode)*
 
 **1.6 — Why without notice?**
 

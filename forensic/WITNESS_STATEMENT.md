@@ -38,7 +38,7 @@ I make this statement from my own knowledge. The facts stated here are true.
 
 ## 2. THE PROPERTY
 
-2.1 The matrimonial home is at [EDIT: address], Oxford. The Respondent is the sole mortgage holder. My name is not on the mortgage.
+2.1 The matrimonial home is at 74 Rewley Road, Oxford. The Respondent is the sole mortgage holder. My name is not on the mortgage.
 
 2.2 I have been living at this address since [EDIT: confirm month] 2025, when I relocated from the United States to be with the Respondent following our engagement and marriage.
 
