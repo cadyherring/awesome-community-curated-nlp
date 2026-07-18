@@ -1,0 +1,9 @@
+# Raw WhatsApp export — contains personal private messages
+# Keep locally and in private storage only
+forensic/data/raw_export.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
