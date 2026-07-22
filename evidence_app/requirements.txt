@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pypdf
+cffi
+python-docx
+openpyxl
+icalendar
+reportlab
+pytest

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Evidence Review</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <input id="search" type="text" placeholder="Search (press / to focus)" autocomplete="off">
+  <select id="filter-status">
+    <option value="">All statuses</option>
+    <option value="unreviewed">Unreviewed</option>
+    <option value="approved">Approved</option>
+    <option value="corrected">Corrected</option>
+  </select>
+  <span class="hint">j/k move &middot; a approve &middot; / search &middot; ? help</span>
+</header>
+
+<main>
+  <section id="list-pane">
+    <ul id="record-list"></ul>
+  </section>
+  <section id="detail-pane">
+    <div id="detail-empty">Select a record.</div>
+    <div id="detail-content" hidden>
+      <h2 id="d-title"></h2>
+      <div class="meta">
+        <span id="d-type" class="badge"></span>
+        <span id="d-review-status" class="badge"></span>
+      </div>
+
+      <div class="field">
+        <label>Date <span id="d-date-status" class="status"></span></label>
+        <input id="d-date-input" type="text" placeholder="YYYY-MM-DD">
+        <button id="d-date-save">Save (verifies)</button>
+      </div>
+
+      <div class="field">
+        <label>Significance <span id="d-sig-status" class="status"></span></label>
+        <textarea id="d-sig-input" rows="3"></textarea>
+        <button id="d-sig-save">Save (verifies)</button>
+      </div>
+
+      <div class="field">
+        <label>Entities</label>
+        <ul id="d-entities"></ul>
+      </div>
+
+      <div class="field">
+        <label>Tags</label>
+        <ul id="d-tags"></ul>
+        <input id="d-tag-input" type="text" placeholder="add tag, enter">
+      </div>
+
+      <div class="field">
+        <label>Related records</label>
+        <ul id="d-links"></ul>
+        <input id="d-link-input" type="number" placeholder="record id to link, enter">
+      </div>
+
+      <div class="field">
+        <label>Source</label>
+        <div id="d-source" class="mono"></div>
+      </div>
+
+      <div class="field">
+        <label>Body</label>
+        <pre id="d-body"></pre>
+      </div>
+
+      <button id="d-approve" class="primary">Approve all proposals for this record (a)</button>
+    </div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
